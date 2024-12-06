@@ -10,12 +10,14 @@ import FormField from "../components/FormField";
 import CustomButton from "../components/CustomButton";
 import Continue from "../components/Continue";
 import OAuth from "../components/OAuth";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
+  const navigation = useNavigation()
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -45,6 +47,12 @@ const Login = () => {
         <CustomButton title={"Login"} style={styles.loginBtn} />
         <Continue />
         <OAuth />
+        <View style={styles.checkMember}>
+          <Text style={styles.checkText}>Not a member?</Text>
+          <TouchableOpacity activeOpacity={0.5} onPress={()=>navigation.navigate("register")}>
+            <Text style={styles.register}>Register now</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -93,5 +101,23 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     marginTop: 40,
+  },
+
+  checkMember: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 50,
+    gap: 2,
+  },
+  checkText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#71717a",
+  },
+  register: {
+    fontWeight: 600,
+    fontSize: 16,
+    color: "#3b82f6",
   },
 });
