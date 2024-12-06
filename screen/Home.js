@@ -1,8 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState("login");
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <Image
@@ -19,6 +21,7 @@ const Home = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
+        onPress={()=>{navigation.navigate("/register")}}
           style={[
             styles.buttons,
             {
@@ -36,6 +39,7 @@ const Home = () => {
               backgroundColor: activeButton === "register" && "#e2e8f0",
             },
           ]}
+          onPress={()=>navigation.navigate("login")}
           onPressIn={() => setActiveButton("login")}
           onPressOut={() => setActiveButton(null)}
         >
@@ -54,11 +58,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#cbd5e1",
+    gap:10
     // paddingVertical:100
   },
   image: {
-    width: 300,
-    height: 300,
+    width: 350,
+    height: 350,
   },
 
   textContent: {
@@ -79,7 +84,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    marginTop: 20,
+    marginTop: 25,
     // flex:1,
     flexDirection: "row",
 
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
     borderColor: "#FFF",
     borderWidth: 2,
     height: 60,
-    borderRadius: 20,
+    borderRadius: 15,
   },
 
   buttons: {
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
     width: "50%",
-    borderRadius: 20,
+    borderRadius: 15,
   },
   buttonText: {
     color: "#374151",
