@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { hp, wp } from "../helper/common";
 
 const Continue = () => {
   return (
@@ -18,18 +19,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    marginVertical: 45,
-
-
+    marginVertical: hp(4.5),
   },
   continueText: {
-    paddingHorizontal: 15,
-    fontSize: 16,
-    color: "#010101",
+    paddingHorizontal: wp(3.4),
+    fontSize: hp(2),
+    color: "#64748b",
   },
   line: {
     borderWidth: 1,
-    borderColor: "##a1a1aa",
+    borderColor: "#64748b",
     width: 80,
     height: 0,
   },

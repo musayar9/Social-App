@@ -1,10 +1,14 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { hp, wp } from "../helper/common";
 
 const Home = () => {
   const [activeButton, setActiveButton] = useState("login");
-  const navigation = useNavigation()
+  useEffect(() => {
+    setActiveButton("login");
+  }, []);
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image
@@ -21,7 +25,9 @@ const Home = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-        onPress={()=>{navigation.navigate("/register")}}
+          onPress={() => {
+            navigation.navigate("/register");
+          }}
           style={[
             styles.buttons,
             {
@@ -39,7 +45,7 @@ const Home = () => {
               backgroundColor: activeButton === "register" && "#e2e8f0",
             },
           ]}
-          onPress={()=>navigation.navigate("login")}
+          onPress={() => navigation.navigate("login")}
           onPressIn={() => setActiveButton("login")}
           onPressOut={() => setActiveButton(null)}
         >
@@ -58,40 +64,40 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#cbd5e1",
-    gap:10
+    gap: 5,
     // paddingVertical:100
   },
   image: {
-    width: 350,
-    height: 350,
+    width: wp(100),
+    height: hp(50),
   },
 
   textContent: {
     alignItems: "center",
-    paddingVertical: 10,
+    paddingVertical: hp(1.5),
   },
   subHead: {
     color: "#334155",
-    fontSize: 32,
+    fontSize: hp(3.5),
     fontWeight: "bold",
   },
   subtitle: {
     color: "#334155",
-    fontSize: 18,
+    fontSize: hp(2),
     textAlign: "center",
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingVertical: hp(3),
+    paddingHorizontal: wp(8),
   },
 
   buttonContainer: {
-    marginTop: 25,
+    marginTop: hp(2),
     // flex:1,
     flexDirection: "row",
 
     width: "75%",
     borderColor: "#FFF",
     borderWidth: 2,
-    height: 60,
+    height: hp(6.8),
     borderRadius: 15,
   },
 
@@ -104,7 +110,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#374151",
-    fontSize: 18,
+    fontSize: hp(2),
     textAlign: "center",
   },
 });

@@ -11,6 +11,7 @@ import CustomButton from "../components/CustomButton";
 import Continue from "../components/Continue";
 import OAuth from "../components/OAuth";
 import { useNavigation } from "@react-navigation/native";
+import { hp, wp } from "../helper/common";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#cbd5e1",
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical: hp(4),
   },
 
   container: {},
@@ -86,30 +88,40 @@ const styles = StyleSheet.create({
   subHead: {
     color: "#334155",
     fontWeight: "bold",
-    fontSize: 40,
+    fontSize: hp(4.5),
   },
   subtitle: {
     color: "#334155",
-    fontSize: 20,
+    fontSize: hp(2.2),
     textAlign: "center",
-    paddingHorizontal: 50,
+    paddingHorizontal: wp(18),
+    color: "#475569",
   },
   formContent: {
-    marginTop: 20,
-    paddingVertical: 15,
+    marginTop: hp(3.2),
+    paddingVertical: hp(1.8),
     gap: 12,
     alignItems: "center",
   },
   recoveryContent: {},
+
+  recoveryPass: {
+    textAlign: "right",
+    marginRight: wp(5.2),
+    // paddingRight: wp(6.5),
+    fontSize: hp(1.8),
+    color: "#4b5563",
+    fontWeight: "600",
+  },
   loginBtn: {
-    marginTop: 30,
+    marginTop: hp(4),
   },
 
   checkMember: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 40,
+    paddingTop: hp(4),
     gap: 2,
   },
   checkText: {

@@ -1,6 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { hp, wp } from "../helper/common"; // Yüzde tabanlı boyutlandırma fonksiyonlarınız
+
 const OAuth = () => {
   return (
     <View style={styles.authContent}>
@@ -14,7 +16,7 @@ const OAuth = () => {
         <Ionicons
           style={styles.authIcons}
           name={"logo-apple"}
-          size={40}
+          size={wp(10)} // Icon boyutu yüzde tabanlı olacak
           color={"#a1a1aa"}
         />
       </TouchableOpacity>
@@ -35,19 +37,21 @@ const styles = StyleSheet.create({
   authContent: {
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 50,
-    marginVertical:10
+    justifyContent: "center",
+    gap: wp(3), // Aradaki boşluk yüzdeye göre ayarlanır
+    marginHorizontal: wp(10),
+    marginVertical: hp(2),
   },
   iconContent: {
     borderWidth: 1,
     borderColor: "#fff",
-    paddingHorizontal: 22,
-    paddingVertical: 10,
-    borderRadius: 12,
+    paddingHorizontal: wp(5), // Yüzde tabanlı padding
+    paddingVertical: hp(1),
+    borderRadius: wp(3), // Yüzde tabanlı köşe yuvarlatma
   },
   authIcons: {
-    width: 40,
-    height: 40,
+
+    width: wp(10),
+    height: hp(5.5),
   },
 });

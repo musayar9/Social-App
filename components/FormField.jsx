@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { hp, wp } from "../helper/common";
 const FormField = ({ value, title, placeholder, handleChange }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -23,9 +24,9 @@ const FormField = ({ value, title, placeholder, handleChange }) => {
         {title === "password" && (
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             {showPassword ? (
-              <Ionicons name={"eye"} size={24} color={"#334155"} />
+              <Ionicons name={"eye"} size={20} color={"#334155"} />
             ) : (
-              <Ionicons name={"eye-off"} size={24} color={"#a1a1aa"} />
+              <Ionicons name={"eye-off"} size={20} color={"#a1a1aa"} />
             )}
           </TouchableOpacity>
         )}
@@ -45,14 +46,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: "#fff",
     borderRadius: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    width: 350,
+    paddingHorizontal: wp(2.5),
+    paddingVertical: hp(1.2),
+    width: wp(90),
   },
 
   textInput: {
     // flex: 1,
 
-    fontSize: 18,
+    fontSize: 15,
   },
 });

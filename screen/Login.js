@@ -11,10 +11,11 @@ import CustomButton from "../components/CustomButton";
 import Continue from "../components/Continue";
 import OAuth from "../components/OAuth";
 import { useNavigation } from "@react-navigation/native";
+import { hp, wp } from "../helper/common";
 
 const Login = () => {
   const [form, setForm] = useState({
-    username: "",
+ email:"",
     password: "",
   });
   const navigation = useNavigation()
@@ -28,10 +29,10 @@ const Login = () => {
         </View>
         <View style={styles.formContent}>
           <FormField
-            value={form.username}
+            value={form.email}
             title={"text"}
-            placeholder={"Enter username"}
-            handleChange={(e) => setForm({ ...form, username: e })}
+            placeholder={"Enter email"}
+            handleChange={(e) => setForm({ ...form, email: e })}
           />
           <FormField
             value={form.password}
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#cbd5e1",
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical:hp(4)
   },
 
   container: {},
@@ -76,38 +78,38 @@ const styles = StyleSheet.create({
   subHead: {
     color: "#334155",
     fontWeight: "bold",
-    fontSize: 40,
+    fontSize: hp(4.5),
   },
   subtitle: {
     color: "#334155",
-    fontSize: 28,
+    fontSize: hp(2.5),
     textAlign: "center",
-    paddingHorizontal: 60,
+    paddingHorizontal: wp(18),
   },
   formContent: {
-    marginTop: 30,
-    paddingVertical: 15,
+    marginTop: hp(3.2),
+    paddingVertical: hp(1.8),
     gap: 12,
     alignItems: "center",
   },
   recoveryContent: {},
 
   recoveryPass: {
-    textAlign: "right",
-    paddingRight: 25,
-    fontSize: 16,
+    textAlign: "right",marginRight:wp(5.2),
+    // paddingRight: wp(6.5),
+    fontSize: hp(1.8),
     color: "#4b5563",
     fontWeight: "600",
   },
   loginBtn: {
-    marginTop: 40,
+    marginTop: hp(4),
   },
 
   checkMember: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 50,
+    paddingTop: hp(4),
     gap: 2,
   },
   checkText: {

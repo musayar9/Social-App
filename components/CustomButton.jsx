@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
+import { hp, wp } from "../helper/common";
 
 const CustomButton = ({ title, style }) => {
   return (
@@ -14,13 +15,13 @@ export default CustomButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#fd6b68",
-    marginHorizontal: 25,
+    marginHorizontal: wp(5.4),
     borderRadius: 12,
   },
   buttonText: {
-    padding: 15,
+    padding: wp(3.4),
     textAlign: "center",
-    fontSize: 16,
+    fontSize: hp(2),
     fontWeight: "bold",
     color: "#fff",
   },
