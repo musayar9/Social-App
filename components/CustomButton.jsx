@@ -2,9 +2,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { hp, wp } from "../helper/common";
 
-const CustomButton = ({ title, style }) => {
+const CustomButton = ({ title, style, handleSubmit }) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={[styles.button, style]}>
+    <TouchableOpacity onPress={handleSubmit} activeOpacity={0.7} style={[styles.button, style]}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );

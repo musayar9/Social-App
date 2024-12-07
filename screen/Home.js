@@ -26,7 +26,7 @@ const Home = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("/register");
+            navigation.navigate("register");
           }}
           style={[
             styles.buttons,

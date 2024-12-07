@@ -12,15 +12,22 @@ import Continue from "../components/Continue";
 import OAuth from "../components/OAuth";
 import { useNavigation } from "@react-navigation/native";
 import { hp, wp } from "../helper/common";
+import { useDispatch, useSelector } from "react-redux";
+// import { register } from "../redux/userSlice";
 
 const Register = () => {
+  const { token } = useSelector((state) => state.user);
   const [form, setForm] = useState({
-  email:"",
+    email: "",
     username: "",
     password: "",
   });
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
+  // const handleSubmit = () => {
+  //   dispatch(register({ email: form.email, password: form.password }));
+  // };
+  console.log("register page token = ", token);
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
@@ -33,7 +40,7 @@ const Register = () => {
         </View>
         <View style={styles.formContent}>
           <FormField
-            value={form.username}
+            value={form.email}
             title={"email"}
             placeholder={"Enter Email"}
             handleChange={(e) => setForm({ ...form, email: e })}
@@ -52,7 +59,11 @@ const Register = () => {
           />
         </View>
 
-        <CustomButton title={"Register"} style={styles.loginBtn} />
+        <CustomButton
+          title={"Register"}
+          style={styles.loginBtn}
+          handleSubmit={handleSubmit}
+        />
         <Continue />
         <OAuth />
         <View style={styles.checkMember}>

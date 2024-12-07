@@ -12,14 +12,19 @@ import Continue from "../components/Continue";
 import OAuth from "../components/OAuth";
 import { useNavigation } from "@react-navigation/native";
 import { hp, wp } from "../helper/common";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/userSlice";
 
 const Login = () => {
+  const { user, token } = useSelector((state) => state.user);
   const [form, setForm] = useState({
- email:"",
+    email: "",
     password: "",
   });
-  const navigation = useNavigation()
-
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  console.log("user", user);
+  console.log("token", token);
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
@@ -45,12 +50,21 @@ const Login = () => {
           <Text style={styles.recoveryPass}>Recovery Password</Text>
         </TouchableOpacity>
 
-        <CustomButton title={"Login"} style={styles.loginBtn} />
+        <CustomButton
+          title={"Login"}
+          style={styles.loginBtn}
+          handleSubmit={() =>
+            dispatch(login({ username: form.email, password: form.password }))
+          }
+        />
         <Continue />
         <OAuth />
         <View style={styles.checkMember}>
           <Text style={styles.checkText}>Not a member?</Text>
-          <TouchableOpacity activeOpacity={0.5} onPress={()=>navigation.navigate("register")}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate("register")}
+          >
             <Text style={styles.register}>Register now</Text>
           </TouchableOpacity>
         </View>
@@ -67,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#cbd5e1",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical:hp(4)
+    paddingVertical: hp(4),
   },
 
   container: {},
@@ -95,7 +109,8 @@ const styles = StyleSheet.create({
   recoveryContent: {},
 
   recoveryPass: {
-    textAlign: "right",marginRight:wp(5.2),
+    textAlign: "right",
+    marginRight: wp(5.2),
     // paddingRight: wp(6.5),
     fontSize: hp(1.8),
     color: "#4b5563",
