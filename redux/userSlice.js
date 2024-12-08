@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   getAuth,
@@ -31,7 +32,7 @@ export const login = createAsyncThunk(
   async ({ username, password }) => {
     try {
       const auth = getAuth();
-      console.log("auth", auth);
+      console.log("auth testwd", auth);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         username,
@@ -43,6 +44,7 @@ export const login = createAsyncThunk(
 
       const userData = { token, user: user };
 
+      await AsyncStorage.setItem("userToken", token);
       return userData;
     } catch (error) {
       console.log("user slice 21 line", error);
@@ -50,6 +52,21 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+export const autoLogin = createAsyncThunk("user/autoLogin", async () => {
+  try {
+    const token = await AsyncStorage.getItem("userToken");
+
+    console.log("token", token);
+    if (token) {
+      return token;
+    } else {
+      throw new Error("user not found");
+    }
+  } catch (error) {
+    throw error;
+  }
+});
 
 const initialState = {
   user: null,
@@ -78,6 +95,23 @@ const userSlice = createSlice({
       state.isAuth = false;
       state.isLoading = false;
       state.error = "Invalid Email or Password";
+    });
+
+    // autoLogin
+
+    builder.addCase(autoLogin.pending, (state) => {
+      state.isLoading = true;
+      state.isAuth = false;
+    });
+    builder.addCase(autoLogin.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isAuth = true;
+      state.token = action.payload;
+    });
+    builder.addCase(autoLogin.rejected, (state) => {
+      state.isLoading = false;
+      state.isAuth = false;
+      state.token = null;
     });
 
     // builder.addCase(register.pending, (state) => {
