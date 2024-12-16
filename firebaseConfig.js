@@ -10,13 +10,15 @@ import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   // apiKey: FIREBASE_API_KEY,
+  apiKey: "AIzaSyBMvGLaczyreIvPBO8TeWCzpg82t3Hb3VY",
 
   authDomain: "social-app-25035.firebaseapp.com",
   projectId: "social-app-25035",
   storageBucket: "social-app-25035.firebasestorage.app",
   messagingSenderId: "1064215810856",
 
-  appId: FIREBASE_API_ID,
+  // appId: FIREBASE_API_ID,
+  appId: "1:1064215810856:web:9ad6feb6550f94768df61d",
 };
 
 // Initialize Firebase

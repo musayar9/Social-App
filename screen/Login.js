@@ -1,11 +1,15 @@
 import {
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormField from "../components/FormField";
 import CustomButton from "../components/CustomButton";
 import Continue from "../components/Continue";
@@ -13,10 +17,10 @@ import OAuth from "../components/OAuth";
 import { useNavigation } from "@react-navigation/native";
 import { hp, wp } from "../helper/common";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/userSlice";
+import { autoLogin, login } from "../redux/userSlice";
 
 const Login = () => {
-  const { user, token } = useSelector((state) => state.user);
+  const { user, token, isLoading } = useSelector((state) => state.user);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -25,51 +29,72 @@ const Login = () => {
   const dispatch = useDispatch();
   console.log("user", user);
   console.log("token", token);
-  return (
-    <SafeAreaView style={styles.screen}>
-      <View style={styles.container}>
-        <View style={styles.textContainer}>
-          <Text style={styles.subHead}>Hello Again! </Text>
-          <Text style={styles.subtitle}>Welcome back you've been missed!</Text>
-        </View>
-        <View style={styles.formContent}>
-          <FormField
-            value={form.email}
-            title={"text"}
-            placeholder={"Enter email"}
-            handleChange={(e) => setForm({ ...form, email: e })}
-          />
-          <FormField
-            value={form.password}
-            title="password"
-            placeholder="Password"
-            handleChange={(e) => setForm({ ...form, password: e })}
-          />
-        </View>
-        <TouchableOpacity style={styles.recoveryContent}>
-          <Text style={styles.recoveryPass}>Recovery Password</Text>
-        </TouchableOpacity>
 
-        <CustomButton
-          title={"Login"}
-          style={styles.loginBtn}
-          handleSubmit={() =>
-            dispatch(login({ username: form.email, password: form.password }))
-          }
-        />
-        <Continue />
-        <OAuth />
-        <View style={styles.checkMember}>
-          <Text style={styles.checkText}>Not a member?</Text>
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => navigation.navigate("register")}
-          >
-            <Text style={styles.register}>Register now</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
+  useEffect(() => {
+    dispatch(autoLogin());
+  }, []);
+
+  if (isLoading) {
+    return <ActivityIndicator size={24} color={"green"} />;
+  }
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView style={styles.screen}>
+        <ScrollView style={{height:"100%"}}>
+          <View style={styles.container}>
+            <View style={styles.textContainer}>
+              <Text style={styles.subHead}>Hello Again! </Text>
+              <Text style={styles.subtitle}>
+                Welcome back you've been missed!
+              </Text>
+            </View>
+            <View style={styles.formContent}>
+              <FormField
+                value={form.email}
+                title={"text"}
+                placeholder={"Enter email"}
+                handleChange={(e) => setForm({ ...form, email: e })}
+              />
+              <FormField
+                value={form.password}
+                title="password"
+                placeholder="Password"
+                handleChange={(e) => setForm({ ...form, password: e })}
+              />
+            </View>
+            <TouchableOpacity style={styles.recoveryContent}>
+              <Text style={styles.recoveryPass}>Recovery Password</Text>
+            </TouchableOpacity>
+
+            <CustomButton
+              title={"Login"}
+              style={styles.loginBtn}
+              handleSubmit={() =>
+                dispatch(
+                  login({ username: form.email, password: form.password })
+                )
+              }
+            />
+            <Continue />
+            <OAuth />
+            <View style={styles.checkMember}>
+              <Text style={styles.checkText}>Not a member?</Text>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => navigation.navigate("register")}
+              >
+                <Text style={styles.register}>Register now</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -81,10 +106,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#cbd5e1",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: hp(4),
+    paddingVertical: hp(10),
+    // height: "100%",
   },
 
-  container: {},
+  container: {
+    // flex: 1,
+    // backgroundColor: "#cbd5e1",
+    // alignItems: "center",
+    // justifyContent: "center",
+    // paddingVertical: hp(10),
+    // height:"100%"
+  },
   textContainer: {
     alignItems: "center",
     gap: 8,
