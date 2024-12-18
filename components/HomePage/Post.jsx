@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { faker } from "@faker-js/faker";
 import PostList from "./PostList";
@@ -29,7 +29,11 @@ const Post = () => {
       keyExtractor={(item) => item.id}
       renderItem={renderPost}
       contentContainerStyle={styles.listContainer}
-      ListFooterComponent={<View style={styles.footer} />}
+      ListFooterComponent={
+        <View style={styles.footer}>
+          <Text>Footer</Text>
+        </View>
+      }
     />
   );
 };
