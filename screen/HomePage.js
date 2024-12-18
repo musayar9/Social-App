@@ -1,17 +1,19 @@
 import {
   FlatList,
-  Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
-import { startAfter } from "firebase/firestore";
 import Feather from "@expo/vector-icons/Feather";
 import { hp, wp } from "../helper/common";
 import { faker } from "@faker-js/faker";
+import StoryList from "../components/HomePage/StoryList";
+import Post from "../components/HomePage/Post";
+
 const HomePage = () => {
   const { user } = useSelector((state) => state.user);
 
@@ -23,38 +25,31 @@ const HomePage = () => {
       name: faker.person.firstName(),
     }));
 
-  console.log("stoties", stories);
+  const renderItem = (itemData) => {
+    return <StoryList {...itemData.item} />;
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Social </Text>
-        <View style={styles.icon}>
-          <Feather name="download-cloud" size={20} color="#475569" />
-          <Text style={styles.redDot}></Text>
-        </View>
-      </View>
-
-      <FlatList
-        horizontal
-        data={stories}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={{ paddingHorizontal: 4, alignItems:"center" }}>
-            <Image
-              source={{ uri: item.avatar }}
-              alt={item.name}
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 30,
-                borderWidth: 2,
-                borderColor: "#facc15",
-              }}
-            />
-            <Text>{item.name}</Text>
+      <View style={{marginBottom:20}}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Social </Text>
+          <View style={styles.icon}>
+            <Feather name="download-cloud" size={20} color="#475569" />
+            <Text style={styles.redDot}></Text>
           </View>
-        )}
-      />
+        </View>
+        <View>
+          <FlatList
+            horizontal
+            data={stories}
+            keyExtractor={(item) => item.id}
+            renderItem={renderItem}
+          />
+        </View>
+
+        <Post />
+      </View>
     </SafeAreaView>
   );
 };
@@ -64,6 +59,7 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginVertical: hp(4),
   },
   header: {
     flexDirection: "row",
@@ -75,14 +71,15 @@ const styles = StyleSheet.create({
   headerText: {
     color: "#111",
     fontSize: hp(3.5),
-    fontWeight: 600,
+    fontWeight: "600",
   },
   icon: {
     width: wp(10),
-    height: hp(5.5),
+    height: hp(5.2),
     borderWidth: 1,
     borderColor: "#cbd5e1",
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 25,
     padding: 5,
     position: "relative",
@@ -97,5 +94,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 2,
+  },
+  postContainer: {
+    flex: 1,
   },
 });
