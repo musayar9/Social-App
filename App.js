@@ -8,7 +8,7 @@ import app from "./firebaseConfig";
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar />
+      {/* <StatusBar /> */}
       <RootNavigation />
     </Provider>
   );

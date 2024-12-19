@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   footer: {
-    height: 120,
+    height: 150,
   },
 });

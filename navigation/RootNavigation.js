@@ -14,6 +14,7 @@ import Create from "../screen/Create";
 import { Entypo } from "@expo/vector-icons";
 import CustomTabBarButton from "../screen/ui/CustomTabBarButton";
 import TabIcon from "../screen/ui/TabIcon";
+import Discover from "../screen/Discover";
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ const RootNavigation = () => {
           />
           <BottomTabs.Screen
             name="message"
-            component={HomePage}
+            component={Discover}
             options={{
               // title: "Home",
 
@@ -64,7 +65,7 @@ const RootNavigation = () => {
                   icon={"compass"}
                   color={color}
                   focused={focused}
-                  name={"Keşfet"}
+                  name={"Discover"}
                   size={size}
                 />
               ),
@@ -118,7 +119,9 @@ const RootNavigation = () => {
           />
         </BottomTabs.Navigator>
       ) : (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+          screenOptions={{ headerShown: false}}
+        >
           <Stack.Screen name="home" component={Home} />
           <Stack.Screen name="login" component={Login} />
           <Stack.Screen name="register" component={Register} />
@@ -134,21 +137,19 @@ const styles = StyleSheet.create({
   tabBar: {
     height: 70,
     backgroundColor: "#ffffff",
-    borderTopLeftRadius: 20, // Köşe yuvarlama estetik görünümü artırır.
-    borderTopRightRadius: 20, // Her iki köşeyi eşit yuvarlamak gerekiyor.
-    paddingHorizontal: 10, // İçerik kenar boşlukları.
-    position: "absolute", // TabBar'ın sabit kalmasını sağlar.
-    left: 0, // Ekranın soluna hizalanır.
-    right: 0, // Ekranın sağına hizalanır.
-    bottom: 0, // Alt kenara sabitlenir.
-    shadowColor: "#000", // Gölge rengi siyah.
-    shadowOffset: { width: 0, height: -3 }, // Yukarı doğru gölge için negatif değer.
-    shadowOpacity: 0.1, // Hafif bir gölge opaklığı.
-    shadowRadius: 10, // Gölgenin yayılma derecesi.
-    elevation: 15, // Android için gölge efekti.
-    borderTopWidth: 1, // Üst kenarda ince bir çizgi.
-    borderTopColor: "#ececec", // İnce çizgi için hafif gri renk.
-    zIndex: 10, // Görsel çakışmayı önler.
-  },
 
+    paddingHorizontal: 10, 
+    position: "absolute", 
+    left: 0, 
+    right: 0, 
+    bottom: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: -3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 15,
+    borderTopWidth: 1,
+    borderTopColor: "#ececec",
+    zIndex: 10, 
+  },
 });

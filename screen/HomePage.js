@@ -13,6 +13,7 @@ import { hp, wp } from "../helper/common";
 import { faker } from "@faker-js/faker";
 import StoryList from "../components/HomePage/StoryList";
 import Post from "../components/HomePage/Post";
+import { StatusBar } from "expo-status-bar";
 
 const HomePage = () => {
   const { user } = useSelector((state) => state.user);
@@ -31,7 +32,7 @@ const HomePage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{marginBottom:20}}>
+      <View style={{ marginBottom: 20 }}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Social </Text>
           <View style={styles.icon}>
@@ -59,7 +60,8 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: hp(4),
+    paddingVertical: hp(4),
+    backgroundColor: "#ffffff",
   },
   header: {
     flexDirection: "row",
