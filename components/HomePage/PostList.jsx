@@ -34,7 +34,7 @@ const PostList = ({ item }) => {
       <View style={styles.postBody}>
         <View style={styles.postHeader}>
           <Text style={styles.postWriter}>
-            {item.userName}{" "}
+            {item.userName}
             <Text style={styles.postSentence}>{item.postSentence}</Text>
           </Text>
         </View>
@@ -48,12 +48,12 @@ const PostList = ({ item }) => {
       {/* icons area */}
       <View style={styles.postFooter}>
         <View style={styles.postIcons}>
-          <Entypo name="heart" size={24} color="red" />
-          <AntDesign name="smile-circle" size={24} color="#eab308" />
-          <FontAwesome6 name="hands-clapping" size={24} color="#fecaca" />
+          <Entypo name="heart" size={20} color="red" />
+          <AntDesign name="smile-circle" size={20} color="#eab308" />
+          <FontAwesome6 name="hands-clapping" size={20} color="#fecaca" />
 
           <View>
-            <Text style={{ fontWeight: "bold", color: "#111", fontSize: 16 }}>
+            <Text style={{ fontWeight: "bold", color: "#111", fontSize: 12 }}>
               {"Cutsyifa"} <Text style={{ color: "#94a3b8" }}>and</Text> 128K
               others
             </Text>
@@ -61,10 +61,10 @@ const PostList = ({ item }) => {
         </View>
 
         <View style={styles.postIcons}>
-          <AntDesign name="like1" size={24} color="#1d4ed8" />
+          <AntDesign name="like1" size={20} color="#1d4ed8" />
           <MaterialCommunityIcons
             name="comment-processing-outline"
-            size={24}
+            size={20}
             color="#94a3b8"
           />
         </View>
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
   },
   postIcons: {
     flexDirection: "row",
+    alignItems:"center",
     gap: 8,
   },
 });

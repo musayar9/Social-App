@@ -47,7 +47,7 @@ const RootNavigation = () => {
                   icon={"home"}
                   color={color}
                   focused={focused}
-                  name={"Home"}
+                  // name={"Home"}
                   size={size}
                 />
               ),
@@ -65,7 +65,7 @@ const RootNavigation = () => {
                   icon={"compass"}
                   color={color}
                   focused={focused}
-                  name={"Discover"}
+                  // name={"Discover"}
                   size={size}
                 />
               ),
@@ -94,7 +94,7 @@ const RootNavigation = () => {
                   icon={"videocam"}
                   color={color}
                   focused={focused}
-                  name={"Video"}
+                  // name={"Video"}
                   size={size}
                 />
               ),
@@ -111,7 +111,7 @@ const RootNavigation = () => {
                   icon={"person"}
                   color={color}
                   focused={focused}
-                  name={"profile"}
+                  // name={"profile"}
                   size={size}
                 />
               ),
@@ -135,7 +135,7 @@ export default RootNavigation;
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 70,
+    height: 60,
     backgroundColor: "#ffffff",
 
     paddingHorizontal: 10, 

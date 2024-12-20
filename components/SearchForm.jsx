@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { hp, wp } from "../helper/common";
-const SearchForm = ({ value, title, placeholder, handleChange }) => {
+const SearchForm = ({ value, title, placeholder, handleChange, style }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View>
@@ -44,16 +44,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
 
     justifyContent: "space-between",
-    backgroundColor: "#fff",
+    backgroundColor: "#f1f5f9",
     borderRadius: 12,
     paddingHorizontal: wp(2.5),
     paddingVertical: hp(1),
     width: wp(80),
+    marginVertical:hp(1)
   },
 
   textInput: {
     // flex: 1,
-
+    width: "100%",
     fontSize: 15,
   },
 });

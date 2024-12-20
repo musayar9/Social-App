@@ -5,9 +5,9 @@ const TabIcon = ({ icon, color, name, focused, size }) => {
   return (
     <View style={styles.iconContainer}>
       <Ionicons name={icon} color={color} size={size || 24} />
-      <Text style={[styles.iconText, { color: focused ? "#111" : "#cbd5e1" }]}>
+      {/* <Text style={[styles.iconText, { color: focused ? "#111" : "#cbd5e1" }]}>
         {name}
-      </Text>
+      </Text> */}
       {/* <Text>{name}</Text> */}
     </View>
   );
