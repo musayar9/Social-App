@@ -12,11 +12,12 @@ const Discover = () => {
     .map(() => ({
       id: faker.string.uuid(),
       userName: faker.person.fullName(),
+      profileImage: faker.image.avatar(),
       like: faker.number.int({ min: 10, max: 1000 }),
       comments: faker.number.int({ min: 0, max: 125 }),
       share: faker.number.int({ min: 5, max: 50 }),
       postImage: faker.image.urlPicsumPhotos(),
-      player:faker.number.int({min:20, max:900})
+      player: faker.number.int({ min: 20, max: 900 }),
     }));
 
   const renderDiscover = (itemData) => {
@@ -52,10 +53,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 10,
   },
-  discoverList:{
-  paddingVertical:wp(2),
-  
-  alignItems:"center",
-  justifyContent:"center"
-  }
+  discoverList: {
+    paddingVertical: wp(2),
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

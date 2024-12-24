@@ -6,6 +6,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import moment from "moment";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+
 const PostList = ({ item }) => {
   const formattedTime = moment(item.createdAt).fromNow(true);
 
@@ -103,9 +104,9 @@ const styles = StyleSheet.create({
     color: "#64748b",
   },
   profileImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(6),
   },
   postBody: { paddingHorizontal: wp(1) },
   postWriter: {
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   },
   postImage: {
     width: "100%",
-    height: hp(20),
+    height: hp(30),
     marginVertical: hp(1),
     borderRadius: 16,
   },
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   },
   postIcons: {
     flexDirection: "row",
-    alignItems:"center",
+    alignItems: "center",
     gap: 8,
   },
 });
