@@ -10,11 +10,6 @@ import {
 import React, { useState } from "react";
 import { hp, wp } from "../../helper/common";
 import Feather from "@expo/vector-icons/Feather";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import Entypo from "@expo/vector-icons/Entypo";
-import EvilIcons from "@expo/vector-icons/EvilIcons";
-import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import DiscoverModal from "./DiscoverModal";
 const DiscoverList = ({ item }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -40,12 +35,13 @@ const DiscoverList = ({ item }) => {
         </View>
       </Pressable>
 
+  
+        <DiscoverModal
+          setModalVisible={setModalVisible}
+          selectedItem={selectedItem}
+          modalVisible={modalVisible}
+        />
 
-      <DiscoverModal
-        setModalVisible={setModalVisible}
-        selectedItem={selectedItem}
-        modalVisible={modalVisible}
-      />
     </SafeAreaView>
   );
 };

@@ -4,6 +4,8 @@ import { faker } from "@faker-js/faker";
 import PostList from "./PostList";
 
 const Post = () => {
+
+
   const post = Array(12)
     .fill(0)
     .map(() => ({

@@ -6,18 +6,20 @@ import Entypo from "@expo/vector-icons/Entypo";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { PanGestureHandler } from "react-native-gesture-handler";
+import DiscoverModalComment from "./DiscoverModalComment";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const DiscoverModal = ({ setModalVisible, selectedItem, modalVisible }) => {
-const [translateY, setTranslateY] = useState(0);
+  const [translateY, setTranslateY] = useState(0);
 
-const handleGesture = (event) => {
-  const { translationY } = event.nativeEvent;
-  if (translationY > 100) {
-    setModalVisible(false);
-  } else {
-    setTranslateY(translationY);
-  }
-};
+  const handleGesture = (event) => {
+    const { translationY } = event.nativeEvent;
+    if (translationY > 100) {
+      setModalVisible(false);
+    } else {
+      setTranslateY(translationY);
+    }
+  };
   return (
     <Modal
       animationType="slide"
@@ -35,7 +37,7 @@ const handleGesture = (event) => {
               style={[styles.button]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <FontAwesome6 name="xmark" size={24} color="#e71f1f" />
+              <Ionicons name="chevron-down-outline" size={24} color="black" />
             </Pressable>
             <View style={styles.modalContent}>
               <View style={styles.modalHeader}>
@@ -94,6 +96,8 @@ const handleGesture = (event) => {
                   <FontAwesome name="bookmark-o" size={24} color="black" />
                 </View>
               </View>
+
+              <DiscoverModalComment comment={selectedItem?.comment} />
             </View>
           </View>
         </View>
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: hp(2),
-    alignSelf: "flex-end",
+    alignSelf: "center",
   },
   buttonOpen: {
     backgroundColor: "#F194FF",

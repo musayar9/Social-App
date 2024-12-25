@@ -7,6 +7,16 @@ import { faker } from "@faker-js/faker";
 import { FlatList } from "react-native";
 import DiscoverList from "../components/DiscoverPage/DiscoverList";
 const Discover = () => {
+  const comment = Array(5)
+    .fill(0)
+    .map(() => ({
+      id: faker.string.uuid(),
+      comment: faker.lorem.sentence(),
+      commentUser: faker.person.fullName(),
+      commentProfileImage: faker.image.avatar(),
+      createdAt: faker.date.soon(),
+      like: faker.number.int({ min: 0, max: 99 }),
+    }));
   const discover = Array(40)
     .fill(0)
     .map(() => ({
@@ -18,6 +28,7 @@ const Discover = () => {
       share: faker.number.int({ min: 5, max: 50 }),
       postImage: faker.image.urlPicsumPhotos(),
       player: faker.number.int({ min: 20, max: 900 }),
+      comment: comment,
     }));
 
   const renderDiscover = (itemData) => {
