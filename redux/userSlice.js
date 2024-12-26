@@ -57,7 +57,7 @@ export const autoLogin = createAsyncThunk("user/autoLogin", async () => {
   try {
     const token = await AsyncStorage.getItem("userToken");
 
-    console.log("token", token);
+
     if (token) {
       return token;
     } else {

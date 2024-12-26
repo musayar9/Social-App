@@ -12,7 +12,7 @@ const SearchForm = ({ value, title, placeholder, handleChange, style }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View>
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer, style]}>
         <TextInput
           style={styles.textInput}
           value={value}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(2.5),
     paddingVertical: hp(1),
     width: wp(80),
-    marginVertical:hp(1)
+    marginVertical: hp(1),
   },
 
   textInput: {

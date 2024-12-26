@@ -2,7 +2,7 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
+
   ScrollView,
   StyleSheet,
   Text,
@@ -18,6 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 import { hp, wp } from "../helper/common";
 import { useDispatch, useSelector } from "react-redux";
 import { autoLogin, login } from "../redux/userSlice";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Login = () => {
   const { user, token, isLoading } = useSelector((state) => state.user);
@@ -30,9 +31,9 @@ const Login = () => {
   console.log("user", user);
   console.log("token", token);
 
-  useEffect(() => {
-    dispatch(autoLogin());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(autoLogin());
+  // }, []);
 
   if (isLoading) {
     return <ActivityIndicator size={24} color={"green"} />;

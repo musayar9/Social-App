@@ -15,6 +15,7 @@ import { Entypo } from "@expo/vector-icons";
 import CustomTabBarButton from "../screen/ui/CustomTabBarButton";
 import TabIcon from "../screen/ui/TabIcon";
 import Discover from "../screen/Discover";
+import Messages from "../screen/Messages";
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
@@ -84,14 +85,14 @@ const RootNavigation = () => {
             }}
           />
           <BottomTabs.Screen
-            name="video"
-            component={Profile}
+            name="messages"
+            component={Messages}
             options={{
               // title: "Profile",
               headerShown: false,
               tabBarIcon: ({ color, focused, size }) => (
                 <TabIcon
-                  icon={"videocam"}
+                  icon={"mail-open-outline"}
                   color={color}
                   focused={focused}
                   // name={"Video"}
